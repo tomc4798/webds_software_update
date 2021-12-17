@@ -13,7 +13,7 @@ import { ILauncher } from '@jupyterlab/launcher';
 
 import { softwareUpdateIcon } from './icons';
 
-import { SoftwareUpdateWidget } from './widget';
+import { SoftwareUpdateWidget } from './widget_container';
 
 /**
  * Initialization data for the @webds/software_update extension.
@@ -40,7 +40,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       },
       execute: () => {
         if (!widget || widget.isDisposed) {
-          const content = new SoftwareUpdateWidget();
+          const content = new SoftwareUpdateWidget(app);
           widget = new MainAreaWidget<SoftwareUpdateWidget>({ content });
           widget.id = 'webds_software_update_widget';
           widget.title.label = 'Software Update';
